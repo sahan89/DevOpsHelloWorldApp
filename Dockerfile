@@ -26,7 +26,7 @@ RUN java -version
 RUN apt-get install git -y
 RUN git --version
 
-RUN apt install maven
+RUN apt install maven -y
 RUN mvn --version
 
 RUN mkdir /opt/tomcat/
