@@ -14,13 +14,13 @@
 FROM ubuntu:latest
 MAINTAINER sahan.ekanayake@explipro.com
 
-RUN sudo apt install default-jdk
+RUN apt install default-jdk
 RUN java -version
 
-RUN git sudo apt install git
+RUN git apt install git
 RUN git --version
 
-RUN sudo apt install maven
+RUN apt install maven
 RUN mvn --version
 
 RUN mkdir /opt/tomcat/
