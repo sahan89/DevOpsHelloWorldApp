@@ -13,12 +13,6 @@
 
 FROM ubuntu:latest
 MAINTAINER sahan.ekanayake@explipro.com
-RUN mkdir /opt/tomcat/
-WORKDIR /opt/tomcat
-RUN pwd
-RUN curl -O http://apache.mirrors.spacedump.net/tomcat/tomcat-8/v8.5.47/bin/apache-tomcat-8.5.47.tar.gz
-RUN tar xvfz apache*.tar.gz
-RUN mv apache-tomcat-8.5.47.tar.gz/* /opt/tomcat/.
 
 RUN sudo apt install default-jdk
 RUN java -version
@@ -28,6 +22,13 @@ RUN git --version
 
 RUN sudo apt install maven
 RUN mvn --version
+
+RUN mkdir /opt/tomcat/
+WORKDIR /opt/tomcat
+RUN pwd
+RUN curl -O http://apache.mirrors.spacedump.net/tomcat/tomcat-8/v8.5.47/bin/apache-tomcat-8.5.47.tar.gz
+RUN tar xvfz apache*.tar.gz
+RUN mv apache-tomcat-8.5.47.tar.gz/* /opt/tomcat/.
 
 RUN mkdir /opt/sahan/
 RUN git clone https://github.com/sahan89/DevOpsHelloWorldApp.git
