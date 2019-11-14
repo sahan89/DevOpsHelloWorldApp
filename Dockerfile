@@ -40,8 +40,8 @@ RUN wget http://apache.mirrors.spacedump.net/tomcat/tomcat-8/v8.5.47/bin/apache-
 #RUN apt-get -y install tomcat8
 #RUN service tomcat8 start
 #RUN service tomcat8 status
-RUN mv apache-tomcat-8.5.47.tar.gz/* /opt/tomcat/.
 RUN tar xvfz apache*.tar.gz
+RUN mv apache-tomcat-8.5.47/* /opt/tomcat/.
 RUN ls
 RUN ls /opt/tomcat/
 #RUN tomcat8 --version
