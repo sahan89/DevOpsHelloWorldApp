@@ -14,8 +14,12 @@
 FROM ubuntu:latest
 MAINTAINER sahan.ekanayake@explipro.com
 
-RUN apt install default-jdk
-RUN java -version
+#RUN apt install default-jdk
+#RUN java -version
+
+RUN add-apt-repository ppa:webupd8team/java
+RUN apt-get update
+RUN apt-get install oracle-java8-installer
 
 RUN git apt install git
 RUN git --version
