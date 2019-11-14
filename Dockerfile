@@ -29,8 +29,8 @@ RUN sudo apt install maven
 RUN mvn --version
 
 RUN mkdir /opt/sahan/
-RUN git clone "https://github.com/sahan89/SampleDevOpsApplication.git"
-RUN cd /opt/sahan/SampleDevOpsApplication
+RUN git clone https://github.com/sahan89/DevOpsHelloWorldApp.git
+RUN cd /opt/sahan/DevOpsHelloWorldApp
 RUN mvn clean install
 
 WORKDIR /opt/tomcat/webapps
