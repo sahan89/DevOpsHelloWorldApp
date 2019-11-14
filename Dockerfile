@@ -49,7 +49,7 @@ RUN ls /opt/tomcat/
 
 RUN mkdir /opt/sahan/
 RUN git clone https://github.com/sahan89/DevOpsHelloWorldApp.git
-RUN cd /opt/sahan/DevOpsHelloWorldApp
+WORKDIR /opt/sahan/DevOpsHelloWorldApp
 RUN mvn clean install
 
 WORKDIR /opt/tomcat/webapps
