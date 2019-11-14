@@ -33,15 +33,19 @@ RUN mvn --version
 RUN mkdir /opt/tomcat/
 WORKDIR /opt/tomcat
 RUN pwd
+RUN apt-get remove tomcat8
 
 RUN wget http://apache.mirrors.spacedump.net/tomcat/tomcat-8/v8.5.47/bin/apache-tomcat-8.5.47.tar.gz
 
 #RUN apt-get -y install tomcat8
 #RUN service tomcat8 start
 #RUN service tomcat8 status
+RUN tar xvfz apache*.tar.gz
+RUN mv apache-tomcat-8.5.47.tar.gz/* /opt/tomcat/.
+RUN ls
+RUN ls /opt/tomcat/
 RUN tomcat8 --version
-#RUN tar xvfz apache*.tar.gz
-#RUN mv apache-tomcat-8.5.47.tar.gz/* /opt/tomcat/.
+
 
 RUN mkdir /opt/sahan/
 RUN git clone https://github.com/sahan89/DevOpsHelloWorldApp.git
