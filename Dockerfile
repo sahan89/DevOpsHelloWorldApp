@@ -54,7 +54,9 @@ WORKDIR /opt/sahan/DevOpsHelloWorldApp/
 RUN pwd
 RUN ls -al
 RUN mvn clean install
+RUN cp /opt/sahan/DevOpsHelloWorldApp/target/DevOpsHelloWorldApp.war /opt/tomcat/webapps/
 
-WORKDIR /opt/tomcat/webapps
+WORKDIR /opt/tomcat/webapps/
+RUN ls -al
 EXPOSE 8080
 CMD ["/opt/tomcat/bin/catalina.sh", "run"]
