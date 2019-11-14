@@ -15,7 +15,12 @@ FROM ubuntu:latest
 MAINTAINER sahan.ekanayake@explipro.com
 
 RUN apt-get update
-RUN apt install default-jdk
+#RUN apt install default-jdk
+RUN apt-get update && \
+    apt-get install -y openjdk-8-jdk && \
+    apt-get install -y ant && \
+    apt-get clean;
+
 RUN java -version
 
 RUN git apt install git
