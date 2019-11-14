@@ -23,7 +23,7 @@ RUN apt-get update && \
 
 RUN java -version
 
-RUN apt-get install git
+RUN apt-get install git -y
 RUN git --version
 
 RUN apt install maven
