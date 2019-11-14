@@ -16,7 +16,7 @@ MAINTAINER sahan.ekanayake@explipro.com
 RUN mkdir /opt/tomcat/
 WORKDIR /opt/tomcat
 RUN pwd
-RUN wget http://apache.mirrors.spacedump.net/tomcat/tomcat-8/v8.5.47/bin/apache-tomcat-8.5.47.tar.gz
+RUN curl -O http://apache.mirrors.spacedump.net/tomcat/tomcat-8/v8.5.47/bin/apache-tomcat-8.5.47.tar.gz
 RUN tar xvfz apache*.tar.gz
 RUN mv apache-tomcat-8.5.47.tar.gz/* /opt/tomcat/.
 
