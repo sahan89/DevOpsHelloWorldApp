@@ -34,6 +34,7 @@ WORKDIR /opt/tomcat
 RUN pwd
 #RUN wget http://apache.mirrors.ionfish.org/tomcat/tomcat-8/v8.5.47/bin/apache-tomcat-8.5.47.tar.gz
 RUN apt-get install tomcat8 -y
+RUN tomcat --version
 RUN service tomcat start
 RUN service tomcat status
 #RUN tar xvfz apache*.tar.gz
