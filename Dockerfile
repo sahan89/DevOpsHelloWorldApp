@@ -11,9 +11,7 @@
 
 #https://www.youtube.com/watch?v=gnBgyAs5qb4
 
-#FROM ubuntu:latest
-
-FROM java:8-jdk-alpine
+FROM ubuntu:latest
 MAINTAINER sahan.ekanayake@explipro.com
 
 RUN apt-get update
