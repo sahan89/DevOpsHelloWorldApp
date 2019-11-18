@@ -1,5 +1,6 @@
-FROM java:8-jdk-alpine
+FROM ubuntu:latest
 MAINTAINER sahan.ekanayake@explipro.com
+
 RUN apt-get update
 RUN apt-get update && \
     apt-get install -y openjdk-8-jdk && \
@@ -8,18 +9,36 @@ RUN apt-get update && \
     apt-get clean;
 
 RUN java -version
-WORKDIR /opt/sahan/DevOpsHelloWorldApp/
-RUN pwd
+
 RUN apt-get install git -y
 RUN git --version
 
 RUN apt install maven -y
 RUN mvn --version
 
-#ONBUILD RUN mvn clean install
-RUN mvn clean install
+RUN mkdir /opt/tomcat/
+WORKDIR /opt/tomcat
+RUN pwd
+RUN apt-get remove tomcat8
+
+RUN wget http://apache.mirrors.spacedump.net/tomcat/tomcat-8/v8.5.47/bin/apache-tomcat-8.5.47.tar.gz
+
+RUN tar xvfz apache*.tar.gz
+RUN mv apache-tomcat-8.5.47/* /opt/tomcat/.
 RUN ls
-RUN cp /home/sahan/DevOpsHelloWorldApp/target/DevOpsHelloWorldApp.war /opt/tomcat/webapps/
-EXPOSE 8085
-#ADD /target/simple-game-0.0.1-SNAPSHOT.war simple-game-0.0.1-SNAPSHOT.war
-ENTRYPOINT ["java","-jar","DevOpsHelloWorldApp.war"]
+RUN ls /opt/tomcat/
+
+
+RUN mkdir /opt/sahan/
+WORKDIR /opt/sahan/
+RUN git clone https://github.com/sahan89/DevOpsHelloWorldApp.git
+WORKDIR /opt/sahan/DevOpsHelloWorldApp/
+RUN pwd
+RUN ls -al
+RUN mvn clean install
+RUN cp /opt/sahan/DevOpsHelloWorldApp/target/DevOpsHelloWorldApp.war /opt/tomcat/webapps/
+
+WORKDIR /opt/tomcat/webapps/
+RUN ls -al
+EXPOSE 8080
+CMD ["/opt/tomcat/bin/catalina.sh", "run"]
