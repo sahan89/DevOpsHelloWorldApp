@@ -39,7 +39,7 @@ pipeline {
             steps {
                 //dir("/var/jenkins_home/gitClone/SampleDevOpsApplication") {
                 //sh "pwd"
-                }
+                //}
                 //docker build -t sample_devops_app .
                 echo "######### Deployment Stage Done #########"
 		    }
