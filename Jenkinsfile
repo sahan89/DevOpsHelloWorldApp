@@ -16,38 +16,7 @@ pipeline {
 
         stage ('Checkout Stage') {
             steps {
-                //git credentialsId: 'git-credentials', url: 'https://github.com/sahan89/DevOpsHelloWorldApp.git'
-		checkout([$class: 'GitSCM', branches: [[name: '*/master']], doGenerateSubmoduleConfigurations: false, extensions: [], submoduleCfg: [], userRemoteConfigs: [[url: 'https://github.com/sahan89/DevOpsHelloWorldApp.git']]])
-                echo pwd
-                echo "######### Checkout Stage Done #########"
-            }
-        }
-
-	stage ('Build Stage') {
-	        steps {
-		        sh 'mvn clean install -DskipTests'
-                echo "######### Build Stage Done #########"
-            }
-		}
-
-	stage ('Testing Stage') {
-            steps {
-                echo "######### Testing Stage Done #########"
-            }
-        }
-
-	stage ('Build Docker Image Stage') {
-            steps {
-                dir("/var/jenkins_home/gitClone/SampleDevOpsApplication") {
-                sh "pwd"
-                }
-                //docker build -t sample_devops_app .
-                echo "######### Deployment Stage Done #########"
-		    }
-       }
-    }
-}
-
+                git (credentialsId: 'git-credentials', url: 'https://github.com/sahan89/DevOpsHelloWorldApp.git', branch: 'master')
                 echo pwd
                 echo "######### Checkout Stage Done #########"
             }
@@ -73,7 +42,7 @@ pipeline {
                 //}
                 //docker build -t sample_devops_app .
                 echo "######### Deployment Stage Done #########"
-		    }
+		 }
        }
     }
 }
