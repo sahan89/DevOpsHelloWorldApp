@@ -16,7 +16,7 @@ pipeline {
 
         stage ('Checkout Stage') {
             steps {
-                git (credentialsId: 'git-credentials', url: 'https://github.com/sahan89/DevOpsHelloWorldApp.git', branch: 'master')
+                git credentialsId: 'git-credentials', url: 'https://github.com/sahan89/DevOpsHelloWorldApp.git'
                 echo pwd
                 echo "######### Checkout Stage Done #########"
             }
