@@ -10,7 +10,7 @@ pipeline {
             steps {
                 echo "PATH = ${PATH}"
                 echo "M2_HOME = ${M2_HOME}"
-		        echo "######### Initialize Stage Done #########"
+		echo "######### Initialize Stage Done #########"
             }
         }
 
@@ -23,8 +23,8 @@ pipeline {
         }
 
 	stage ('Build Stage') {
-	        steps {
-		        sh 'mvn clean install -DskipTests'
+	    steps {
+		sh 'mvn clean install -DskipTests'
                 echo "######### Build Stage Done #########"
             }
 		}
