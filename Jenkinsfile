@@ -16,8 +16,9 @@ pipeline {
 
         stage ('Checkout Stage') {
             steps {
-                git (credentialsId: 'git-credentials', url: 'https://github.com/sahan89/DevOpsHelloWorldApp.git', branch: 'master')
-                echo pwd
+                //git (credentialsId: 'git-credentials', url: 'https://github.com/sahan89/DevOpsHelloWorldApp.git', branch: 'master')
+                checkout([$class: 'GitSCM', branches: [[name: '*/master']], doGenerateSubmoduleConfigurations: false, extensions: [], submoduleCfg: [], userRemoteConfigs: [[url: 'https://github.com/sahan89/DevOpsHelloWorldApp.git']]])
+		echo pwd
                 echo "######### Checkout Stage Done #########"
             }
         }
