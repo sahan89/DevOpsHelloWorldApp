@@ -16,8 +16,7 @@ pipeline {
 
         stage ('Checkout Stage') {
             steps {
-                git credentialsId: 'git-credentials', url: 'https://github.com/sahan89/DevOpsHelloWorldApp'
-                //git (credentialsId: 'git-credentials', url: 'https://github.com/sahan89/DevOpsHelloWorldApp.git', branch: 'master')
+                echo "@@@@@@@@@ Checkout Stage @@@@@@@@@"
                 //checkout([$class: 'GitSCM', branches: [[name: '*/master']], doGenerateSubmoduleConfigurations: false, extensions: [], submoduleCfg: [], userRemoteConfigs: [[url: 'https://github.com/sahan89/DevOpsHelloWorldApp.git']]])
 		        echo pwd
                 echo "######### Checkout Stage Done #########"
@@ -26,7 +25,7 @@ pipeline {
 
 	stage ('Build Stage') {
 	    steps {
-		sh 'mvn clean install -DskipTests'
+		        //sh 'mvn clean install -DskipTests'
                 echo "######### Build Stage Done #########"
             }
 		}
