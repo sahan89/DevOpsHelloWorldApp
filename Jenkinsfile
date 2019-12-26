@@ -10,22 +10,20 @@ pipeline {
             steps {
                 echo "PATH = ${PATH}"
                 echo "M2_HOME = ${M2_HOME}"
-		        echo "######### Initialize Stage Done #########"
+		echo "######### Initialize Stage Done #########"
             }
         }
 
         stage ('Checkout Stage') {
             steps {
-                echo "@@@@@@@@@ Checkout Stage @@@@@@@@@"
-                //checkout([$class: 'GitSCM', branches: [[name: '*/master']], doGenerateSubmoduleConfigurations: false, extensions: [], submoduleCfg: [], userRemoteConfigs: [[url: 'https://github.com/sahan89/DevOpsHelloWorldApp.git']]])
-		        echo pwd
-                echo "######### Checkout Stage Done #########"
+                checkout([$class: 'GitSCM', branches: [[name: '*/master']], doGenerateSubmoduleConfigurations: false, extensions: [], submoduleCfg: [], userRemoteConfigs: [[url: 'https://github.com/sahan89/DevOpsHelloWorldApp.git']]])
+		echo "######### Checkout Stage Done #########"
             }
         }
 
 	stage ('Build Stage') {
 	    steps {
-		        //sh 'mvn clean install -DskipTests'
+		sh 'mvn clean install -DskipTests'
                 echo "######### Build Stage Done #########"
             }
 		}
