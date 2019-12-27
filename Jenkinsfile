@@ -24,12 +24,17 @@ pipeline {
 	 stage ('Build Stage') {
 	        steps {
 		        sh 'mvn clean install -DskipTests'
-		        sh 'pwd'
-		        sh 'cd /home/sahan/.jenkins/workspace/HelloWorldPipeline/target/'
-		        sh 'cp DevOpsHelloWorldApp.war /opt/apache-tomcat-8/webapps/'
                 echo "######### Build Stage Done #########"
             }
 		}
+
+    stage ('Deploy Stage') {
+    	        steps {
+    		        sh 'cd /home/sahan/.jenkins/workspace/HelloWorldPipeline/target/'
+    		        sh 'cp DevOpsHelloWorldApp.war /opt/apache-tomcat-8/webapps/'
+                    echo "######### Deploy Stage Done #########"
+                }
+    		}
 
 	 stage ('SonarQube Analysis Stage') {
          steps {
