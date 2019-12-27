@@ -1,6 +1,6 @@
 <html>
 <body>
-<h1 style="color: blue">
+<h1 style="color: red">
     Hello World.!
     <br/>
     Jenkins Pipeline Example.!!
