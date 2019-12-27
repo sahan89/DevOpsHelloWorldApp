@@ -32,6 +32,8 @@ pipeline {
     	        steps {
     		        sh 'cd /home/sahan/.jenkins/workspace/HelloWorldPipeline/target/'
     		        sh 'ls'
+    		        sh 'cd /target/'
+    		        sh 'ls'
     		        sh 'cp DevOpsHelloWorldApp.war /opt/apache-tomcat-8/webapps/'
                     echo "######### Deploy Stage Done #########"
              }
