@@ -10,31 +10,33 @@ pipeline {
             steps {
                 echo "PATH = ${PATH}"
                 echo "M2_HOME = ${M2_HOME}"
-		echo "######### Initialize Stage Done #########"
+		        echo "######### Initialize Stage Done #########"
             }
         }
 
-        stage ('Checkout Stage') {
+     stage ('Checkout Stage') {
             steps {
                 checkout([$class: 'GitSCM', branches: [[name: '*/master']], doGenerateSubmoduleConfigurations: false, extensions: [], submoduleCfg: [], userRemoteConfigs: [[url: 'https://github.com/sahan89/DevOpsHelloWorldApp.git']]])
-		echo "######### Checkout Stage Done #########"
+		        echo "######### Checkout Stage Done #########"
             }
         }
 
-	stage ('Build Stage') {
+	 stage ('Build Stage') {
 	    steps {
 		sh 'mvn clean install -DskipTests'
                 echo "######### Build Stage Done #########"
             }
 		}
 
-	stage ('Testing Stage') {
+	 stage ('Sonarcube Analysis Stage') {
             steps {
-                echo "######### Testing Stage Done #########"
+            withSonarQubeEnv('sonarqube-server')
+            sh 'mvn sonar:sonar'
+            echo "######### Sonarcube Analysis Stage #########"
             }
-        }
+      }
 
-	stage ('Build Docker Image Stage') {
+	 stage ('Build Docker Image Stage') {
             steps {
                 //dir("/var/jenkins_home/gitClone/SampleDevOpsApplication") {
                 //sh "pwd"
@@ -42,6 +44,6 @@ pipeline {
                 //docker build -t sample_devops_app .
                 echo "######### Deployment Stage Done #########"
 		  }
-       }
+      }
     }
 }
