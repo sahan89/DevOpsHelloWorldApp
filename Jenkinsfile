@@ -52,7 +52,7 @@ pipeline {
                 //sh "pwd"
                 //}
                 //docker build -t sample_devops_app .
-                echo "######### Deployment Stage Done #########"
+                echo "######### Build Docker Image Stage #########"
 		  }
        }
     }
