@@ -33,7 +33,7 @@ pipeline {
             withSonarQubeEnv('sonarqube-server'){
             sh 'mvn sonar:sonar'
             }
-            echo "######### SonarQube Analysis Stage #########"
+            echo "######### SonarQube Analysis Stage Done #########"
          }
      }
 
@@ -42,6 +42,8 @@ pipeline {
          		        sh 'ls'
          		        sh 'pwd'
          		        sh 'cd /home/sahan/.jenkins/workspace/HelloWorldPipeline/target/'
+         		        sh 'pwd'
+         		        sh 'cd /target/'
          		        sh 'pwd'
          		        sh 'cp DevOpsHelloWorldApp.war /opt/apache-tomcat-8/webapps/'
                          echo "######### Deploy Stage Done #########"
