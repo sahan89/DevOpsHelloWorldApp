@@ -39,8 +39,10 @@ pipeline {
 
      stage ('Deploy Stage') {
          	        steps {
-         		        sh 'cd /home/sahan/.jenkins/workspace/HelloWorldPipeline/target/'
          		        sh 'ls'
+         		        sh 'pwd'
+         		        sh 'cd /home/sahan/.jenkins/workspace/HelloWorldPipeline/target/'
+         		        sh 'pwd'
          		        sh 'cp DevOpsHelloWorldApp.war /opt/apache-tomcat-8/webapps/'
                          echo "######### Deploy Stage Done #########"
                   }
