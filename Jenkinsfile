@@ -24,18 +24,19 @@ pipeline {
 	 stage ('Build Stage') {
 	    steps {
 		sh 'mvn clean install -DskipTests'
+		pwd
                 echo "######### Build Stage Done #########"
             }
 		}
 
-	 stage ('Sonarcube Analysis Stage') {
-            steps {
+	 stage ('SonarQube Analysis Stage') {
+         steps {
             withSonarQubeEnv('sonarqube-server'){
             sh 'mvn sonar:sonar'
             }
-            echo "######### Sonarcube Analysis Stage #########"
-            }
-      }
+            echo "######### SonarQube Analysis Stage #########"
+         }
+     }
 
 	 stage ('Build Docker Image Stage') {
             steps {
@@ -45,6 +46,6 @@ pipeline {
                 //docker build -t sample_devops_app .
                 echo "######### Deployment Stage Done #########"
 		  }
-      }
+       }
     }
 }
