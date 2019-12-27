@@ -30,11 +30,11 @@ pipeline {
 
      stage ('Deploy Stage') {
     	        steps {
-    		        sh 'cd /home/sahan/.jenkins/workspace/HelloWorldPipeline/'
-    		        sh 'cd /target/'
+    		        sh 'cd /home/sahan/.jenkins/workspace/HelloWorldPipeline/target/'
+    		        sh 'ls'
     		        sh 'cp DevOpsHelloWorldApp.war /opt/apache-tomcat-8/webapps/'
                     echo "######### Deploy Stage Done #########"
-                }
+             }
       }
 
 	 stage ('SonarQube Analysis Stage') {
