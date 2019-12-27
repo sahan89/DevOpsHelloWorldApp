@@ -41,7 +41,7 @@ pipeline {
          	        steps {
          		        sh 'ls'
          		        sh 'pwd'
-         		        sh 'cd /home/sahan/.jenkins/workspace/HelloWorldPipeline/target/'
+         		        sh 'cd /home/sahan/.jenkins/workspace/HelloWorldPipeline/'
          		        sh 'pwd'
          		        sh 'cd /target/'
          		        sh 'pwd'
