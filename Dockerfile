@@ -1,5 +1,5 @@
 FROM ubuntu:latest
-MAINTAINER sahan.ekanayake@explipro.com
+MAINTAINER sahanekanayake08@gmail.com
 
 RUN apt-get update
 RUN apt-get update && \
