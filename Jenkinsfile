@@ -30,8 +30,9 @@ pipeline {
 
 	 stage ('Sonarcube Analysis Stage') {
             steps {
-            withSonarQubeEnv('sonarqube-server')
+            withSonarQubeEnv('sonarqube-server'){
             sh 'mvn sonar:sonar'
+            }
             echo "######### Sonarcube Analysis Stage #########"
             }
       }
