@@ -28,17 +28,6 @@ pipeline {
             }
 		}
 
-     stage ('Deploy Stage') {
-    	        steps {
-    		        sh 'cd /home/sahan/.jenkins/workspace/HelloWorldPipeline/target/'
-    		        sh 'ls'
-    		        sh 'cd /target/'
-    		        sh 'ls'
-    		        sh 'cp DevOpsHelloWorldApp.war /opt/apache-tomcat-8/webapps/'
-                    echo "######### Deploy Stage Done #########"
-             }
-      }
-
 	 stage ('SonarQube Analysis Stage') {
          steps {
             withSonarQubeEnv('sonarqube-server'){
@@ -47,6 +36,17 @@ pipeline {
             echo "######### SonarQube Analysis Stage #########"
          }
      }
+
+     stage ('Deploy Stage') {
+         	        steps {
+         		        sh 'cd /home/sahan/.jenkins/workspace/HelloWorldPipeline/target/'
+         		        sh 'ls'
+         		        sh 'cd /target/'
+         		        sh 'ls'
+         		        sh 'cp DevOpsHelloWorldApp.war /opt/apache-tomcat-8/webapps/'
+                         echo "######### Deploy Stage Done #########"
+                  }
+           }
 
 	 stage ('Build Docker Image Stage') {
             steps {
