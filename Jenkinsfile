@@ -39,7 +39,7 @@ pipeline {
 
      stage ('Deploy Stage') {
          	steps {
-                	sh 'mv target/DevOpsHelloWorldApp.war target/DevOpsHelloWorldApp.${BUILD_NUMBER}.war'
+                	sh 'mv target/DevOpsHelloWorldApp.war target/hello-world-app.${BUILD_NUMBER}.war'
                 echo "######### Deploy Stage Done #########"
             }
       }
