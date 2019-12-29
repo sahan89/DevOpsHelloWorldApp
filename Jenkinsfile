@@ -7,7 +7,7 @@ pipeline {
     } 
 
     environment {
-        registry = "sahan89/DevOpsHelloWorldApp"
+        registry = "sahan89/hello-world-app"
         registryCredential = 'dockerhub'
         dockerImage = ''
     }
