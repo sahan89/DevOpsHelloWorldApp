@@ -5,6 +5,12 @@ pipeline {
         jdk 'Java_Home'
     }
 
+    environment {
+        registry = "sahan89/DevOpsHelloWorldApp"
+        registryCredential = 'dockerhub'
+        dockerImage = ''
+    }
+
      stages {
          stage ('Initialize') {
             steps {
@@ -46,12 +52,21 @@ pipeline {
 
 	 stage ('Build Docker Image Stage') {
             steps {
-                //dir("/var/jenkins_home/gitClone/SampleDevOpsApplication") {
-                //sh "pwd"
-                //}
-                //docker build -t sample_devops_app .
+                script {
+                        docker.build registry + ":$BUILD_NUMBER"
+                      }
                 echo "######### Build Docker Image Stage #########"
 		  }
+       }
+     stage('Deploy Docker Image Stage') {
+             steps{
+                script {
+                   docker.withRegistry( '', registryCredential ) {
+                   dockerImage.push()
+                 }
+               }
+               echo "######### Deploy Docker Image Stage #########"
+           }
        }
     }
 }
