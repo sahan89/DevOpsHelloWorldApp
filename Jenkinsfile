@@ -41,7 +41,7 @@ pipeline {
          	steps {
          		sh 'cp /home/sahan/.jenkins/workspace/HelloWorldPipeline/target/DevOpsHelloWorldApp.war /opt/apache-tomcat-8/webapps/ '
                 echo "######### Deploy Stage Done #########"
-             }
+            }
       }
 
 	 stage ('Build Docker Image Stage') {
