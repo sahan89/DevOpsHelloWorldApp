@@ -39,7 +39,7 @@ pipeline {
 
      stage ('Deploy Stage') {
          	steps {
-         		sh 'cp /home/sahan/.jenkins/workspace/HelloWorldPipeline/target/DevOpsHelloWorldApp.war /opt/apache-tomcat-8/webapps/ '
+                	sh 'mv target/DevOpsHelloWorldApp.war target/DevOpsHelloWorldApp.${BUILD_NUMBER}.war'
                 echo "######### Deploy Stage Done #########"
             }
       }
