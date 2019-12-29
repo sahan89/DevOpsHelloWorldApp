@@ -17,6 +17,6 @@ RUN set -x \
     && rm bin/*.bat \
     && rm tomcat.tar.gz*
 
-COPY /target/DevOpsHelloWorldApp.war "$CATALINA_HOME"/webapps/
+COPY /target/*.war "$CATALINA_HOME"/webapps/
 EXPOSE 8080
 CMD ["catalina.sh", "run"]
