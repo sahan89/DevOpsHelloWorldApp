@@ -1,5 +1,10 @@
 pipeline {
-    agent any
+   agent {
+    	node {
+        	label 'Java'
+        	customWorkspace '/home/mchathur/Jenkins/'
+   	 }
+    } 
     tools {
         maven 'M2_Home'
         jdk 'Java_Home'
@@ -34,15 +39,6 @@ pipeline {
             }
 		}
 
-	 stage ('SonarQube Analysis Stage') {
-         steps {
-            withSonarQubeEnv('sonarqube-server'){
-            sh 'mvn sonar:sonar'
-            }
-            echo "######### SonarQube Analysis Stage Done #########"
-         }
-     }
-
      stage ('Deploy Stage') {
          	steps {
          		sh 'cp /home/sahan/.jenkins/workspace/HelloWorldPipeline/target/DevOpsHelloWorldApp.war /opt/apache-tomcat-8/webapps/ '
@@ -58,7 +54,7 @@ pipeline {
                 echo "######### Build Docker Image Stage #########"
 		  }
        }
-     stage('Deploy Docker Image Stage') {
+    /*  stage('Deploy Docker Image Stage') {
              steps{
                 script {
                    docker.withRegistry( '', registryCredential ) {
@@ -67,6 +63,6 @@ pipeline {
                }
                echo "######### Deploy Docker Image Stage #########"
            }
-       }
+       } */
     }
 }
