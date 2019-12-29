@@ -5,10 +5,6 @@ pipeline {
         	customWorkspace '/home/mchathur/Jenkins/'
    	 }
     } 
-    tools {
-        maven 'M2_Home'
-        jdk 'Java_Home'
-    }
 
     environment {
         registry = "sahan89/DevOpsHelloWorldApp"
