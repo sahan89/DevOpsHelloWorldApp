@@ -55,7 +55,7 @@ pipeline {
     stage('Upload Artifact') {
             steps {
                  script {
-                          def server = Artifactory.Artifactory-1
+                          def server = "Artifactory-1"
                           server.bypassProxy = true
                           def buildInfo = server.upload spec: uploadSpec
                   }     
