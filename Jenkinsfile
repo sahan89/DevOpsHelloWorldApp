@@ -10,6 +10,14 @@ pipeline {
         registry = "sahan89/hello-world-app"
         registryCredential = 'dockerhub'
         dockerImage = ''
+        def uploadSpec = """{
+           "files": [
+               {
+               "pattern": "target/*.war",
+                   "target": "libs-snapshot-local/war/"
+               }
+           ]
+        }"""
     }
 
      stages {
@@ -37,12 +45,24 @@ pipeline {
             }
 		}
 
-     stage ('Deploy Stage') {
+    stage ('Deploy Stage') {
          	steps {
                 	sh 'mv target/DevOpsHelloWorldApp.war target/hello-world-app.${BUILD_NUMBER}.war'
                 echo "######### Deploy Stage Done #########"
             }
-      }
+    }
+
+    stage('Upload Artifact') {
+            steps {
+                 script {
+                          def server = Artifactory.Artifactory-1
+                          server.bypassProxy = true
+                          def buildInfo = server.upload spec: uploadSpec
+                          }
+                
+                }
+            }
+    }
 
 	 stage ('Build Docker Image Stage') {
             steps {
