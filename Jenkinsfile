@@ -47,13 +47,13 @@ pipeline {
 	 stage ('Build Docker Image Stage') {
             steps {
                 script {
-                        docker.build registry + ":$BUILD_NUMBER"
+                       dockerImage = docker.build registry + ":$BUILD_NUMBER"
                       }
                 echo "######### Build Docker Image Stage #########"
 		  }
        }
 
-       /* stage ('Artifactory configuration') {
+        /* stage ('Artifactory configuration') {
                    steps {
                        rtServer (
                            id: "Artifactory-1",
