@@ -14,7 +14,7 @@ pipeline {
            "files": [
                {
                "pattern": "target/*.war",
-                "target": "libs-snapshot-local/war/"
+                "target": "generic-local/sahan/DevOpsHelloWorldApp/war/"
                }
            ]
         }"""
