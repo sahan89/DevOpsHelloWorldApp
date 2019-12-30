@@ -58,10 +58,9 @@ pipeline {
                           def server = Artifactory.Artifactory-1
                           server.bypassProxy = true
                           def buildInfo = server.upload spec: uploadSpec
-                          }
-                
-                }
+                  }     
             }
+
     }
 
 	 stage ('Build Docker Image Stage') {
