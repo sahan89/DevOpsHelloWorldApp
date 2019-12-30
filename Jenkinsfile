@@ -14,7 +14,7 @@ pipeline {
            "files": [
                {
                "pattern": "target/*.war",
-                   "target": "libs-snapshot-local/war/"
+                "target": "libs-snapshot-local/war/"
                }
            ]
         }"""
@@ -55,7 +55,7 @@ pipeline {
     stage('Upload Artifact') {
             steps {
                  script {
-                          def server = "Artifactory-1"
+                          def server = Artifactory.server 'Artifactory-1'
                           def buildInfo = server.upload spec: uploadSpec
                   }     
             }
