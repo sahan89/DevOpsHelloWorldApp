@@ -19,16 +19,16 @@ pipeline {
            ]
         }"""
 
-        tag = VersionNumber(versionNumberString: '${BUILD_DATE_FORMATTED,"yyyyMMdd"}-develop-${BUILDS_TODAY}-${BUILD_NUMBER}');
+        tag = VersionNumber(versionNumberString: '${BUILD_DATE_FORMATTED,"yyyyMMdd"}-${BRANCH_NAME}-${BUILDS_TODAY}-${BUILD_NUMBER}');
     }
 
      stages {
          stage ('Initialize') {
             steps {
-		sh '''
-                echo "PATH = ${PATH}"
-                echo "M2_HOME = ${M2_HOME}"
-		'''	
+		                sh '''
+                      echo "PATH = ${PATH}"
+                      echo "M2_HOME = ${M2_HOME}"
+		                '''	
 	        echo "######### Initialize Stage Done #########"
             }
         }
