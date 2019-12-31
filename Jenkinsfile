@@ -18,6 +18,8 @@ pipeline {
                }
            ]
         }"""
+
+        tag = VersionNumber(versionNumberString: '${BUILD_DATE_FORMATTED,"yyyyMMdd"}-develop-${BUILDS_TODAY}-${BUILD_NUMBER}');
     }
 
      stages {
@@ -47,7 +49,7 @@ pipeline {
 
     stage ('Deploy Stage') {
          	steps {
-                	sh 'mv target/DevOpsHelloWorldApp.war target/hello-world-app.${BUILD_NUMBER}.war'
+                	sh 'mv target/DevOpsHelloWorldApp.war target/hello-world-app.${tag}.war'
                 echo "######### Deploy Stage Done #########"
             }
     }
@@ -65,7 +67,7 @@ pipeline {
 	 stage ('Build Docker Image Stage') {
             steps {
                 script {
-                       dockerImage = docker.build registry + ":$BUILD_NUMBER"
+                       dockerImage = docker.build registry + ":$tag"
                       }
                 echo "######### Build Docker Image Stage #########"
 		  }
