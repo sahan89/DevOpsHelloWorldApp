@@ -2,9 +2,9 @@ pipeline {
    agent {
     	node {
         	label 'Java'
-        	customWorkspace '/home/mchathur/Jenkins/'
+        	customWorkspace '/home/ec2-user/Jenkins/'
    	 }
-    } 
+   }
 
     environment {
         registry = "sahan89/hello-world-app"
@@ -23,10 +23,10 @@ pipeline {
      stages {
          stage ('Initialize') {
             steps {
-		sh '''
-                echo "PATH = ${PATH}"
-                echo "M2_HOME = ${M2_HOME}"
-		'''	
+		        sh '''
+                     echo "PATH = ${PATH}"
+                     echo "M2_HOME = ${M2_HOME}"
+		        '''
 	        echo "######### Initialize Stage Done #########"
             }
         }
