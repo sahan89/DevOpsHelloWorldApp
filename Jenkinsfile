@@ -10,7 +10,7 @@ pipeline {
    agent {
     	node {
         	label 'Java'
-        	customWorkspace '/home/ec2-user/Jenkins/'
+        	customWorkspace '/home/ec2-user/jenkins/'
    	    }
     } 
 
