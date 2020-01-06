@@ -68,14 +68,14 @@ pipeline {
                     }
             }
 
-            stage('Upload Artifact') {
+          /*   stage('Upload Artifact') {
                     steps {
                         script {
                                 def server = Artifactory.server 'Artifactory-1'
                                 def buildInfo = server.upload spec: uploadSpec
                         }     
                     }
-            }
+            } */
 
             stage ('Build Docker Image Stage') {
                     steps {
